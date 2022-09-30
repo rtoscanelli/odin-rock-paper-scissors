@@ -38,21 +38,42 @@ function singleRound(playerChoice, computerChoice) {
     }
 }
 
+function validPlay(playerPlay) {
+    playerPlay = playerPlay.toLowerCase();
+    plays = ['rock', 'paper', 'scissors'];
+    if (plays.includes(playerPlay)){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 let playerScore, computerScore;
 
 function game() {
-    let computerPlay, playerPlay;
+    let computerPlay, playerPlay = "";
     playerScore = computerScore = 0;
     for (let index = 0; index < 5; index++) {
         computerPlay = getComputerChoice();
+        
         playerPlay = prompt("Chose a play: Rock, Paper or Scissors!");
+
+        while(!validPlay(playerPlay)){
+            playerPlay = prompt("Play does not exist. Chose a valid play: Rock, Paper or Scissors!");
+        }
+
+        console.log("ROUND:", index+1)
         console.log(singleRound(playerPlay, computerPlay));
         console.log("Player Score:", playerScore, "Computer Score:", computerScore);
+        playerPlay = ""
     }
+    
+    console.log("")
     if (playerScore > computerScore)
-        console.log("You Win!");
+        console.log("You Win! 🏆");
     else if (playerScore < computerScore)
-        console.log("You Lose!")
+        console.log("You Lose! 😢")
     else
-        console.log("That's a Tie!")
+        console.log("That's a Tie! 🙂")
 }   
