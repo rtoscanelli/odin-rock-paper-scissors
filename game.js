@@ -4,11 +4,10 @@ function getComputerChoice() {
     return play;
 }
 
-function singleRound(playerChoice, computerChoice) {
-    //1 - convert/accept case insesitive player choice
+function playRound(playerChoice, computerChoice) {
     playerChoice = playerChoice.toLowerCase()
     computer = computerChoice.toLowerCase()
-    //2 - compare both choices
+
     if (playerChoice == computer) {
         return "That's a tie! " + computerChoice + " vs " + computerChoice + "."
     }
@@ -64,7 +63,7 @@ function game() {
         }
 
         console.log("ROUND:", index+1)
-        console.log(singleRound(playerPlay, computerPlay));
+        console.log(playRound(playerPlay, computerPlay));
         console.log("Player Score:", playerScore, "Computer Score:", computerScore);
         playerPlay = ""
     }
